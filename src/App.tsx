@@ -1,19 +1,18 @@
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import {ICurrency} from './api/types';
-import {getCurrencies} from './api/nbrb-api';
 
 function App() {
-    const [count, setCount] = useState(0)
     const [currencies, setCurrencies] = useState<ICurrency[] | null>(null);
 
-    useEffect(() => {
-        getCurrencies().then(res => setCurrencies(res))
-    }, [])
-
-    currencies && console.log(currencies.find(item => item.Cur_Abbreviation === 'EUR'))
+    const handleClick = async () => {
+        const res = await fetch('https://api.nbrb.by/exrates/currencies')
+        // const res = await getCurrencies();
+        const data = await res.json();
+        setCurrencies(data);
+    };
 
     return (
         <>
@@ -26,10 +25,10 @@ function App() {
                 </a>
             </div>
             <h1>Vite + React</h1>
-            <div>{currencies && currencies.find(item => item.Cur_Abbreviation === 'EUR')?.Cur_Abbreviation}</div>
+            {currencies && <div>{currencies.find(item => item.Cur_Abbreviation === 'EUR')!.Cur_Abbreviation}</div>}
             <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                    count is {count}
+                <button onClick={handleClick}>
+                    get request
                 </button>
                 <p>
                     Edit <code>src/App.tsx</code> and save to test HMR
