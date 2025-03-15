@@ -1,0 +1,7 @@
+.header {
+    width: 100%;
+    position: sticky;
+    height: 50px;
+    background-color: #620bb4;
+    margin-bottom: 20px;
+}

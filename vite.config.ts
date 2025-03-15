@@ -38,8 +38,8 @@ const manifest: Partial<ManifestOptions> = {
     orientation: "any",
     display: "standalone",
     lang: "ru-RU",
-    name: "Test App",
-    short_name: "MyApp",
+    name: "USD/BYN",
+    short_name: "USD/BYN",
     start_url: "/"
 };
 export default defineConfig({

@@ -1,0 +1,16 @@
+.section {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}
+.day {
+    width: 80px;
+}
+
+.rate {
+    width: 50px;
+}
+
+.container {
+    margin-bottom: 20px;
+}
